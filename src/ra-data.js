@@ -107,6 +107,18 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
                     url = `${apiUrl}/${resource}?${stringify(query)}`;
                     break;
             }
+            case DELETE_MANY:
+                url = `${apiUrl}/${resource}/${params.ids[0]}`;
+                options.method = 'DELETE';
+                options.headers = new Headers({ 'Authorization': 'Bearer '+ localStorage.getItem('token') });
+                break;
+                case GET_MANY: {
+                    const query = {
+                        id: params.ids,
+                    };
+                    url = `${apiUrl}/${resource}?${stringify(query)}`;
+                    break;
+            }
             default:
                 throw new Error(`Unsupported fetch action type ${type}`);
         }
@@ -173,7 +185,7 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
                 params.ids.map(id =>
                     httpClient(`${apiUrl}/${resource}/${id}`, {
                         method: 'DELETE',
-                       // headers: new Headers({ 'Authorization': 'Bearer '+ localStorage.getItem('token') })
+                       headers: new Headers({ 'Authorization': 'Bearer '+ localStorage.getItem('token') })
 
                     })
                     

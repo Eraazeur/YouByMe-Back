@@ -1,15 +1,15 @@
 import React from 'react';
-import { ArrayInput, SimpleFormIterator,  List, SelectInput, ReferenceInput, NumberField, Create, Edit, SimpleForm, DisabledInput, TextInput,  Datagrid, TextField, EditButton } from 'react-admin';
+import { ArrayInput, SimpleFormIterator,  Filter, List, SelectInput, ReferenceInput, NumberField, Create, Edit, SimpleForm, DisabledInput, TextInput,  Datagrid, TextField, EditButton } from 'react-admin';
 
-// const PostFilter = (props) => (
-//     <Filter {...props}>
-//         <TextInput label="Search" source="nom" alwaysOn />
-//     </Filter>
-// );
+ const PostFilter = (props) => (
+    <Filter {...props}>
+         <TextInput label="Search"placeholder="Rechercher un nom" source="nom" alwaysOn />
+     </Filter>
+ );
 
 export const UserList = props => (
     <div>
-    <List {...props} >
+    <List {...props} filters={<PostFilter />}>
         <Datagrid>
             <NumberField label="ID" source="id"/>
             <TextField label="Nom" source="nom"/>

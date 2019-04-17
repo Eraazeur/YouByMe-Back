@@ -23,7 +23,7 @@ class CustomRouteLayout extends Component {
             <div>         
                 <form id="uploadFile" onSubmit={this.submit}>
                     <input type="file" name="file" id="test"accept=".csv" />
-                    <input type="submit" value="test"/>
+                    <input type="submit" value="Envoyer"/>
                 </form>
                 
             </div>
