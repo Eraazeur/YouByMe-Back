@@ -12,6 +12,7 @@ import { VoteSessionList, VoteSessionCreate, VoteSessionEdit } from './VoteSessi
 import authProvider from './authProvider';
 import { validationList, validationCreate } from './Validation/validation';
 import { SoftSkillList } from './Softskills/Softskill';
+import { TracaVoteList } from './TracabiliteVote/TracebiliteVote';
 import CustomRouteLayout from "./Import/customRouteLayout";
 import People from '@material-ui/icons/People';
 import Class from '@material-ui/icons/Class';
@@ -37,6 +38,7 @@ const App = () => (
       <Resource name="softskill"  icon={List} options={{ label: 'SoftSkill' }} list={SoftSkillList} />
       <Resource name="categorie" icon={List} options={{ label: 'Catégorie' }} list={CategorieList} />
       <Resource name="sessionvote" icon={List} options={{ label: 'Session de vote' }} list={VoteSessionList} create={VoteSessionCreate} edit={VoteSessionEdit}/>      
+      <Resource name="tracabilitevote" icon={List} options={{ label: 'Suivi des votes' }} list={TracaVoteList}/>      
   </Admin>
 );
 export default App;
