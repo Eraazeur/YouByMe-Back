@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, SelectArrayInput, ArrayInput, ReferenceArrayInput , ReferenceInput, SelectInput, SimpleFormIterator, EditButton, NumberInput, Create, Edit, SimpleForm, DisabledInput, TextInput, Datagrid, TextField } from 'react-admin';
+import { List,  ArrayInput , ReferenceInput, SelectInput, SimpleFormIterator, EditButton, NumberInput, Create, Edit, SimpleForm, DisabledInput, TextInput, Datagrid, TextField } from 'react-admin';
 
 
 export const PromoList = props => (
@@ -23,7 +23,7 @@ export const PromoCreate = (props) => (
 );
 
 export const PromoEdit = (props) => (
-    <Edit title={<userTitle />} {...props}>
+    <Edit {...props}>
         <SimpleForm>
             <DisabledInput label="Id" source="id" />
             <TextInput label="Nom" source="nom"/>

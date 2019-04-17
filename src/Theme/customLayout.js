@@ -1,7 +1,6 @@
 // in src/MyLayout.js
-import { Layout, UserMenu, MenuItemLink } from 'react-admin';
+import { Layout } from 'react-admin';
 import React from 'react';
-import SettingsIcon from '@material-ui/icons/Settings';
 
 import MyMenu from './customMenu';
 

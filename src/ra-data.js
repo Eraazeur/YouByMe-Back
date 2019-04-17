@@ -17,7 +17,7 @@ const convertToWaterline = (filters) => {
 
     let where = {}
     forEach(filters, (value, key) => {
-        if(key.endsWith("_id") || ["object","array"].includes(typeof value)) {
+        if(key.endsWith("_id") || ["object","array"].includes(typeof value) || key==="groupe") {
             where[key] = value
         } else {
             const words = value.trim().split(" ")
@@ -85,7 +85,7 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
             }
             case UPDATE:
                 url = `${apiUrl}/${resource}/${params.id}`;
-                options.method = 'PUT';
+                options.method = 'PATCH';
                 options.headers = new Headers({ 'Authorization': 'Bearer '+ localStorage.getItem('token') });
                 options.body = JSON.stringify(params.data);
                 break;
@@ -112,13 +112,6 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
                 options.method = 'DELETE';
                 options.headers = new Headers({ 'Authorization': 'Bearer '+ localStorage.getItem('token') });
                 break;
-                case GET_MANY: {
-                    const query = {
-                        id: params.ids,
-                    };
-                    url = `${apiUrl}/${resource}?${stringify(query)}`;
-                    break;
-            }
             default:
                 throw new Error(`Unsupported fetch action type ${type}`);
         }

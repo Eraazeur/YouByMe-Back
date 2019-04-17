@@ -1,9 +1,12 @@
 import React from 'react';
-import { ArrayInput, SimpleFormIterator,  Filter, List, SelectInput, ReferenceInput, NumberField, Create, Edit, SimpleForm, DisabledInput, TextInput,  Datagrid, TextField, EditButton } from 'react-admin';
+import { FunctionField,  ArrayInput, SimpleFormIterator,  Filter, List, SelectInput, ReferenceInput, NumberField, Create, Edit, SimpleForm, DisabledInput, TextInput,  Datagrid, TextField, EditButton } from 'react-admin';
 
  const PostFilter = (props) => (
     <Filter {...props}>
-         <TextInput label="Search"placeholder="Rechercher un nom" source="nom" alwaysOn />
+         <TextInput label="Chercher par nom" source="nom" alwaysOn />
+         <ReferenceInput label="Chercher par groupe" source="groupe" reference="groupe" alwaysOn>
+            <SelectInput  optionText="nom" />
+         </ReferenceInput>
      </Filter>
  );
 
@@ -12,8 +15,7 @@ export const UserList = props => (
     <List {...props} filters={<PostFilter />}>
         <Datagrid>
             <NumberField label="ID" source="id"/>
-            <TextField label="Nom" source="nom"/>
-            <TextField label="Prenom" source="prenom"/>
+            <FunctionField label="Nom Prenom" render={record => `${record.nom} ${record.prenom}`} />            
             <TextField label="Email" source="email" type="email"/>
             <TextField label="Promo" source="promos[0].nom"/>
             <TextField label="Groupe" source="groupe.nom"/>
@@ -41,7 +43,7 @@ export const UserCreate = (props) => (
 );
 
 export const UserEdit = (props) => (
-    <Edit title={<userTitle />} {...props}>
+    <Edit {...props}>
         <SimpleForm>
             <DisabledInput label="Id" source="id" />
             <TextInput label="Nom" source="nom"/>

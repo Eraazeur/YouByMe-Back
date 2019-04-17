@@ -1,26 +1,17 @@
 import React from 'react';
-import { List, ReferenceInput, ReferenceField, SelectInput, DateField, NumberField, Create, Edit, SimpleForm, DisabledInput,  DateInput, Datagrid, TextField, EditButton } from 'react-admin';
-
-// const PostFilter = (props) => (
-//     <Filter {...props}>
-//         <TextInput label="Search" source="nom" alwaysOn />
-//     </Filter>
-// );
-
+import { List, ReferenceInput, ReferenceField, SelectInput, DateField, NumberField, Create, Edit, SimpleForm, DisabledInput,  DateInput, Datagrid, FunctionField, TextField, EditButton } from 'react-admin';
 
 export const VoteSessionList = props => (
     <div>
     <List {...props} >
         <Datagrid>
-            <NumberField source="id" />
             <TextField label="Code Analytique" source="codeAnalytique" />
             <ReferenceField label="Pilote" source="idPilote" reference="user">
-                <TextField source="nom" />
+                <FunctionField label="Nom Prenom" render={record => `${record.nom} ${record.prenom}`} />                            
             </ReferenceField>
             <DateField label="Date Début"source="dateDebut" />
             <DateField label="Date Fin" source="dateFin"/>
             <EditButton/>
-            <reqVoteSessionBtn/>
         </Datagrid>
     </List>
     </div>
@@ -43,9 +34,8 @@ export const VoteSessionCreate = (props) => (
      
 
 export const VoteSessionEdit = (props) => (
-    <Edit title={<userTitle />} {...props} >
+    <Edit {...props} >
         <SimpleForm>
-            <DisabledInput label="Id" source="id" />
             <ReferenceInput label="Promo" source="codeAnalytique" reference="promo">
                 <SelectInput optionText="nom"/>
             </ReferenceInput>

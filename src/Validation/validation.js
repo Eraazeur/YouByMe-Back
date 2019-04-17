@@ -1,15 +1,15 @@
 import React from 'react';
-import { ReferenceInput, SelectInput, List, DateField,  ReferenceField, EditButton, Create,  SimpleForm,  Datagrid, TextField } from 'react-admin';
+import { FunctionField, ReferenceInput, SelectInput, List, DateField,  ReferenceField, Create,  SimpleForm,  Datagrid, TextField } from 'react-admin';
 
 
 export const validationList = props => (
     <List {...props}>
         <Datagrid>
             <ReferenceField label="Validé Pour" source="id_eleve.id" reference="user">
-                <TextField  source="nom"/>
+            <FunctionField label="Nom Prenom" render={record => `${record.nom} ${record.prenom}`} />            
             </ReferenceField>
             <ReferenceField label="Validé Par" source="id_valide_par.id" reference="user">
-                <TextField  source="nom"/>
+            <FunctionField label="Nom Prenom" render={record => `${record.nom} ${record.prenom}`} />            
             </ReferenceField>
             <DateField  source="dateValidation"/>
             <ReferenceField label="Catégorie" source="id_t_soft_skill.id" reference="softskill">

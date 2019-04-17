@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; // eslint-disable-line import/no-unresolved
 
+
 class CustomRouteLayout extends Component {
 
 
@@ -25,7 +26,6 @@ class CustomRouteLayout extends Component {
                     <input type="file" name="file" id="test"accept=".csv" />
                     <input type="submit" value="Envoyer"/>
                 </form>
-                
             </div>
         );
     }
