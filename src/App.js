@@ -1,6 +1,5 @@
 // in src/App.js
 import React from 'react';
-
 import { Route } from "react-router";
 import { Admin, Resource } from 'react-admin';
 import jsonServerProvider from './ra-data';
@@ -19,6 +18,7 @@ import Class from '@material-ui/icons/Class';
 import Grade from '@material-ui/icons/Grade';
 import CheckCircle from '@material-ui/icons/CheckCircle';
 import List from '@material-ui/icons/List';
+import PageView from '@material-ui/icons/Pageview';
 import MyLayout from './Theme/customLayout';
 
 
@@ -38,7 +38,7 @@ const App = () => (
       <Resource name="softskill"  icon={List} options={{ label: 'SoftSkill' }} list={SoftSkillList} />
       <Resource name="categorie" icon={List} options={{ label: 'Catégorie' }} list={CategorieList} />
       <Resource name="sessionvote" icon={List} options={{ label: 'Session de vote' }} list={VoteSessionList} create={VoteSessionCreate} edit={VoteSessionEdit}/>      
-      <Resource name="tracabilitevote" icon={List} options={{ label: 'Suivi des votes' }} list={TracaVoteList}/>      
+      <Resource name="tracabilitevote" icon={PageView} options={{ label: 'Suivi des votes' }} list={TracaVoteList}/>      
   </Admin>
 );
 export default App;

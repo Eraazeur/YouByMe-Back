@@ -14,6 +14,9 @@ export const TracaVoteList = props => (
             <ReferenceField source="softskill" reference="softskill">
                 <TextField source="nom"/>
             </ReferenceField>
+            <ReferenceField source="periode" reference="sessionvote">
+                <FunctionField render={record => `${record.codeAnalytique}`} />                                          
+            </ReferenceField>
             <DateField source="date"/>
         </Datagrid>
     </List>
